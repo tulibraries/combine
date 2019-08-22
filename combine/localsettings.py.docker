@@ -108,7 +108,7 @@ SERVICE_HUB_PREFIX = 'foo--'
 
 # OAI Server
 OAI_RESPONSE_SIZE = 500
-COMBINE_OAI_IDENTIFIER = 'oai:YOUR_OAI_PREFIX'
+COMBINE_OAI_IDENTIFIER = 'oai:funnel_cake'
 METADATA_PREFIXES = {
 	'mods':{
 			'schema':'http://www.loc.gov/standards/mods/v3/mods.xsd',
