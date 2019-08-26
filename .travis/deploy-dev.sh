@@ -9,6 +9,7 @@ pipenv install # install playbook requirements
 pipenv run ansible-galaxy install -r requirements.yml # install playbook role requirements
 cp .circleci/.vault ~/.vault # setup vault password retrieval from travis envvar
 chmod +x ~/.vault  # setup vault password retrieval from travis envvar
+export DEV_ENV=dev # this should run with dev environment envvars
 
 # deploy to qa using ansible-playbook
 pipenv run ansible-playbook -i inventory/dev/hosts playbook.yml --vault-password-file=~/.vault -e 'ansible_ssh_port=9229' --private-key=~/.ssh/.conan_the_deployer
