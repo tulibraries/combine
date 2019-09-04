@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
 import os
 
 # Combine Version
@@ -155,12 +154,6 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
-        # 'file': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.FileHandler',
-        #     'filename': '/var/logs/combine/combine.log',
-        #     'formatter': 'verbose'
-        # },
     },
     'loggers': {
         'core': {
@@ -196,3 +189,4 @@ try:
     from combine.localsettings import *
 except ImportError:
     pass
+
