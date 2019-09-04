@@ -52,7 +52,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
+#local_settings.py
 
 # Flask stuff:
 instance/
@@ -108,7 +108,7 @@ metastore_db
 metastore_db/
 
 # settings
-combine/localsettings.py
+#combine/localsettings.py
 
 # Mac OS
 .DS_Store
