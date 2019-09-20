@@ -4,7 +4,7 @@ from django.conf import settings
 
 # Default Settings Overrides
 SECRET_KEY = os.getenv('APP_SECRET_KEY', 'blergh')
-DEBUG = os.getenv('APP_DEBUG_MODE', False)
+DEBUG = bool(os.getenv('APP_DEBUG_MODE', False))
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
@@ -23,16 +23,16 @@ APP_HOST = os.getenv('APP_HOST', '127.0.0.1')
 
 # Spark Cluster Information
 SPARK_HOST = os.getenv('SPARK_HOST', '127.0.0.1')
-SPARK_PORT = os.getenv('SPARK_PORT', 8080)
+SPARK_PORT = int(os.getenv('SPARK_PORT', 8080))
 # if taken, will automatically increment +100 from here until open port is found
 SPARK_APPLICATION_ROOT_PORT = 4040
 
 # Spark tuning
-SPARK_MAX_WORKERS = os.getenv('SPARK_MAX_WORKERS', 1)
-JDBC_NUMPARTITIONS = os.getenv('JDBC_NUMPARTITIONS', 200)
-SPARK_REPARTITION = os.getenv('SPARK_REPARTITION', 200)
-TARGET_RECORDS_PER_PARTITION = os.getenv('TARGET_RECORDS_PER_PARTITION', 5000)
-MONGO_READ_PARTITION_SIZE_MB = os.getenv('MONGO_READ_PARTITION_SIZE_MB', 4)
+SPARK_MAX_WORKERS = int(os.getenv('SPARK_MAX_WORKERS', 1))
+JDBC_NUMPARTITIONS = int(os.getenv('JDBC_NUMPARTITIONS', 200))
+SPARK_REPARTITION = int(os.getenv('SPARK_REPARTITION', 200))
+TARGET_RECORDS_PER_PARTITION = int(os.getenv('TARGET_RECORDS_PER_PARTITION', 5000))
+MONGO_READ_PARTITION_SIZE_MB = int(os.getenv('MONGO_READ_PARTITION_SIZE_MB', 4))
 
 # Apache Livy settings
 '''
@@ -40,7 +40,7 @@ Combine uses Livy to issue spark statements.
 Livy provides a stateless pattern for interacting with Spark, and by proxy, DPLA code.
 '''
 LIVY_HOST = os.getenv('LIVY_HOST', '127.0.0.1')
-LIVY_PORT = os.getenv('LIVY_PORT', 8998)
+LIVY_PORT = int(os.getenv('LIVY_PORT', 8998))
 LIVY_DEFAULT_SESSION_CONFIG = {
     'kind':'pyspark',
     'jars':[
@@ -66,21 +66,21 @@ LIVY_DEFAULT_SESSION_CONFIG = {
 Make sure to note file:// or hdfs:// prefix
 '''
 BINARY_STORAGE = os.getenv('BINARY_STORAGE', 'file:///home/combine/data/combine')
-WRITE_AVRO = os.getenv('WRITE_AVRO', False)
+WRITE_AVRO = bool(os.getenv('WRITE_AVRO', False))
 
 # ElasicSearch server
 ES_HOST = os.getenv('ES_HOST', '127.0.0.1')
-INDEX_TO_ES = os.getenv('INDEX_TO_ES', True)
+INDEX_TO_ES = bool(os.getenv('INDEX_TO_ES', True))
 
 # ElasticSearch analysis
-CARDINALITY_PRECISION_THRESHOLD = os.getenv('CARDINALITY_PRECISION_THRESHOLD', 100)
-ONE_PER_DOC_OFFSET = os.getenv('ONE_PER_DOC_OFFSET', 0.05)
+CARDINALITY_PRECISION_THRESHOLD = int(os.getenv('CARDINALITY_PRECISION_THRESHOLD', 100))
+ONE_PER_DOC_OFFSET = float(os.getenv('ONE_PER_DOC_OFFSET', 0.05))
 
 # Service Hub
 SERVICE_HUB_PREFIX = os.getenv('SERVICE_HUB_PREFIX', 'funcake--')
 
 # OAI Server
-OAI_RESPONSE_SIZE = os.getenv('OAI_RESPONSE_SIZE', 500)
+OAI_RESPONSE_SIZE = int(os.getenv('OAI_RESPONSE_SIZE', 500))
 COMBINE_OAI_IDENTIFIER = os.getenv('COMBINE_OAI_IDENTIFIER', 'oai:funnel_cake')
 METADATA_PREFIXES = {
     'mods':{
@@ -105,7 +105,7 @@ COMBINE_DATABASE = {
 }
 
 # DPLA API
-DPLA_RECORD_MATCH_QUERY = os.getenv('DPLA_RECORD_MATCH_QUERY', True)
+DPLA_RECORD_MATCH_QUERY = bool(os.getenv('DPLA_RECORD_MATCH_QUERY', True))
 DPLA_API_KEY = os.getenv('DPLA_API_KEY', None)
 
 # AWS S3 Credentials
@@ -159,6 +159,6 @@ DATABASES = {
         'USER': os.getenv('MYSQL_USER', 'combine'),
         'PASSWORD': os.getenv('MYSQL_PASSWORD', 'combine'),
         'HOST': os.getenv('MYSQL_HOST', '127.0.0.1'),
-        'PORT': os.getenv('MYSQL_PORT', '3306'),
+        'PORT': int(os.getenv('MYSQL_PORT', 3306)),
     }
 }
