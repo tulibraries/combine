@@ -133,12 +133,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/opt/combine/static'
 
+LOGLEVEL = os.environ.get('LOGLEVEL', 'debug').upper()
 # Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'comsole': {
+        'console': {
             'format': '[%(levelname)s] %(asctime)s %(name)s.%(funcName)s (%(lineno)d): %(message)s'
         },
     },
@@ -155,12 +156,12 @@ LOGGING = {
         },
         'combine': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': LOGLEVEL,
             'propagate': False,
         },
         'core': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': LOGLEVEL,
             'propagate': False,
         },
     },
