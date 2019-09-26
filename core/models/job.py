@@ -1491,8 +1491,8 @@ class IndexMappingFailure(mongoengine.Document):
     # meta
     meta = {
         'index_options': {},
-        'index_background': False,
-        'auto_create_index': False,
+        'index_background': True,
+        'auto_create_index': True,
         'index_drop_dups': False,
         'indexes': [
             {'fields': ['job_id']},
@@ -3438,8 +3438,8 @@ class Record(mongoengine.Document):
     # meta
     meta = {
         'index_options': {},
-        'index_background': False,
-        'auto_create_index': False,
+        'index_background': True,
+        'auto_create_index': True,
         'index_drop_dups': False,
         'indexes': [
             {'fields': ['job_id']},
@@ -4004,8 +4004,8 @@ class RecordValidation(mongoengine.Document):
     # meta
     meta = {
         'index_options': {},
-        'index_background': False,
-        'auto_create_index': False,
+        'index_background': True,
+        'auto_create_index': True,
         'index_drop_dups': False,
         'indexes': [
             {'fields': ['record_id']},
