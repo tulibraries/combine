@@ -123,7 +123,7 @@ class ESIndex(object):
         if not es_handle_temp.indices.exists(index_name):
             # put combine es index templates
             template_body = {
-                'template': '*',
+                'index_patterns': '*',
                 'settings': {
                     'number_of_shards': 1,
                     'number_of_replicas': 0,
@@ -207,7 +207,7 @@ class ESIndex(object):
 
         # put/confirm combine es index templates
         template_body = {
-            'template': '*',
+            'index_patterns': '*',
             'settings': {
                 'number_of_shards': 1,
                 'number_of_replicas': 0,

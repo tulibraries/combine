@@ -2032,7 +2032,7 @@ class CombineStateIOImport(CombineStateIO):
                 if not es_handle_temp.indices.exists(index_name):
                     # put combine es index templates
                     template_body = {
-                        'template': '*',
+                        'index_patterns': '*',
                         'settings': {
                             'number_of_shards': 1,
                             'number_of_replicas': 0,
